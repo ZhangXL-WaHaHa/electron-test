@@ -2,12 +2,12 @@
  * @Author: Tobi
  * @Date: 2023-09-03 14:38:22
  * @LastEditors: Do not edit
- * @LastEditTime: 2023-09-03 15:50:31
+ * @LastEditTime: 2023-09-03 20:24:12
  * @Description: 
  * @FilePath: \test\index.js
  */
 // electron 模块可以用来控制应用的生命周期和创建原生浏览窗口
-const { app, BrowserWindow } = require('electron')
+const { app, BrowserWindow, MessageChannelMain } = require('electron')
 const rendererToMain = require('./demo/rendererToMain/main')
 const rendererMainTwoWay = require('./demo/rendererMainTwoWay/main')
 const mainToRenderer = require('./demo/mainToRenderer/main')
@@ -16,9 +16,20 @@ const mainToRenderer = require('./demo/mainToRenderer/main')
 const createWindow = () => {
     const todoList = []
 
-    rendererToMain(todoList) // 窗口1. 渲染进程 -> 主进程
-    rendererMainTwoWay(todoList) // 窗口2. 渲染进程，主进程双向通信
-    mainToRenderer() // 窗口3. 主进程 -> 渲染进程
+    const rendererToMainWindow = rendererToMain(todoList) // 窗口1. 渲染进程 -> 主进程
+    const rendererMainTwoWayWindow = rendererMainTwoWay(todoList) // 窗口2. 渲染进程，主进程双向通信
+    const mainToRendererWindow = mainToRenderer() // 窗口3. 主进程 -> 渲染进程
+
+    /** postmessage */
+    // 建立通道
+    const { port1, port2, port3 } = new MessageChannelMain()
+    // webContents准备就绪后，使用postMessage向每个webContents发送一个端口。
+    rendererToMainWindow.once('ready-to-show', () => {
+        rendererToMainWindow.webContents.postMessage('port', null, [port1])
+    })
+    mainToRendererWindow.once('ready-to-show', () => {
+        mainToRendererWindow.webContents.postMessage('port', null, [port2])
+    })
 }
 
 // 这段程序将会在 Electron 结束初始化

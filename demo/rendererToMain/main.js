@@ -18,4 +18,6 @@ module.exports = function rendererToMain(todoList) {
     })
     rendererToMain.loadFile('./demo/rendererToMain/index.html')
     rendererToMain.webContents.openDevTools() // 打开开发工具
+
+    return rendererToMain
 }

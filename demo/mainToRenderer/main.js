@@ -31,4 +31,6 @@ module.exports = function mainToRenderer() {
     console.log(value) // will print value to Node console
   })
   mainToRenderer.webContents.openDevTools()
+
+  return mainToRenderer
 }

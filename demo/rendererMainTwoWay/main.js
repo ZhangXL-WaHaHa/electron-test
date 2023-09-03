@@ -16,4 +16,6 @@ module.exports = function rendererMainTwoWay(todoList = []) {
     })
     rendererMainTwoWay.loadFile('./demo/rendererMainTwoWay/index.html')
     rendererMainTwoWay.webContents.openDevTools() // 打开开发工具
+
+    return rendererMainTwoWay
 }
