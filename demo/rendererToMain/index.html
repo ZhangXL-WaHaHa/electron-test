@@ -1,0 +1,24 @@
+<!--
+ * @Author: Tobi
+ * @Date: 2023-09-03 14:14:54
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-09-03 16:14:05
+ * @Description: 
+ * @FilePath: \test\demo\rendererToMain\index.html
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>渲染进程到主进程（单向）</title>
+  </head>
+  <body>
+    <div>
+      Title: <input id="title"/>
+      <button id="btn" type="button">Set</button>
+    </div>
+    <script src="./renderer.js"></script>
+  </body>
+</html>

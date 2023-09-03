@@ -1,0 +1,27 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "electron相关demo",
+  "main": "index.js",
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  },
+  "devDependencies": {
+    "electron": "^26.1.0",
+    "electron-reloader": "^1.2.3"
+  },
+  "scripts": {
+    "dev": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ZhangXL-WaHaHa/electron-test.git"
+  },
+  "author": "Tobi",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ZhangXL-WaHaHa/electron-test/issues"
+  },
+  "homepage": "https://github.com/ZhangXL-WaHaHa/electron-test#readme"
+}

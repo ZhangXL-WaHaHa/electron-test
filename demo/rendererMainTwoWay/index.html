@@ -1,0 +1,23 @@
+<!--
+ * @Author: Tobi
+ * @Date: 2023-09-03 14:14:54
+ * @LastEditors: Do not edit
+ * @LastEditTime: 2023-09-03 15:52:42
+ * @Description: 
+ * @FilePath: \test\demo\rendererMainTwoWay\index.html
+-->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <!-- https://developer.mozilla.org/en-US/docs/Web/HTTP/CSP -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'">
+    <title>渲染进程，主进程双向通信</title>
+  </head>
+  <body>
+    Todo: <input id="title"/>
+    <button id="btn" type="button">add</button>
+    <ul id="todoList"></ul>
+    <script src="./renderer.js"></script>
+  </body>
+</html>
